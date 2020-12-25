@@ -5,8 +5,9 @@
  * - Run (default)
  */
 
-import { ajv } from './util/ajv.js'
+import { getCoefficientSetFromProcessArguments } from './lib/getCoefficientSetFromProcessArguments.js'
+import { getRootSet } from './lib/getRootSet.js'
 
-getRootSet()
+getRootSet(getCoefficientSetFromProcessArguments(process.argv))
   .then(console.log)
   .catch(console.error)

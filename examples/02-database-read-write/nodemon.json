@@ -1,0 +1,16 @@
+{
+  "verbose": false,
+  "execMap": {
+    "js": "node --experimental-vm-modules"
+  },
+  "ignoreRoot": [
+    ".git",
+    ".log",
+    "cache",
+    "coverage"
+  ],
+  "ignore": [
+    "globalConfig.json"
+  ],
+  "ext": "js,json"
+}

@@ -76,6 +76,9 @@ NOTE: Mock external dependencies.
 
 ## Write operations
 
+1. Write default operations:
+  1. Validate inputs according to definitions.
+  1. Validate outputs according to definitions.
 1. If you can write the operations right away, do it.
 1. If you can't write the operations right away:
   1. Try to find the operations via Google.
@@ -172,8 +175,9 @@ NOTE: In tests, the output values to external APIs are collected via mocks.
 
 # Philosophy
 
-1. Start from goal & design backwards (outputs -> inputs -> operations).
-1. Start from high-level picture, refine to low-level details.
+1. Start from goal & design backwards (outputs -> inputs -> tests -> operations).
+1. Start from high-level picture, refine to low-level details (high-level functions -> low-level functions).
+  1. Fill the high-level picture completely, then move to low-level details (write all operations of high-level function -> for each operation: write an implementation).
 
 ## Start from goal
 

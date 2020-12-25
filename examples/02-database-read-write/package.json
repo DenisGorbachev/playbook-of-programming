@@ -5,15 +5,15 @@
   "author": "Denis Gorbachev",
   "license": "MIT",
   "scripts": {
-    "test:watch": "jest --watch --bail",
-    "execute": "babel-node ./index.js"
+    "test:watch": "jest --watch --bail"
   },
   "engines": {
     "node": "^14.10.1"
   },
   "dependencies": {
     "ajv": "^7.0.2",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
