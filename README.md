@@ -6,7 +6,7 @@
 
 Playbook saves your time by providing **a decision-making system** for common questions:
 
-1. [How to write a program?](#write-a-program)
+1. [How to write a program?]
 1. [How to write a function?](#write-a-function)
 1. [How to model a real-world entity?](#model-a-real-world-entity)
 
@@ -16,7 +16,8 @@ Playbook saves your time by providing **a decision-making system** for common qu
 
 1. [Get users](#get-a-user) (min 3).
 1. [Get use cases](#get-a-user-dream) (min 3 per user).
-1. [Write stories](#write-a-story).
+1. [Write event definitions](#write-a-story).
+1. [Generate event sequences](#generate-event-sequences).
 1. [Write event listeners](#write-an-event-listener).
 1. [Get user executions](#get-user-executions)
 1. Loop to step 1 until you get what you want from users (typically money).
@@ -25,14 +26,13 @@ NOTE: Each program has an implicit "run" event listener, which is the program bo
 
 ## Get a user
 
-Definition: [user buy-in](#user-buy-in)
-
-1. Ask the user: "I'm developing a program to do X. Do you want to try it as soon as it's available?"
+1. Find a person who might be interested in using the program.
+1. Ask the person: "I'm developing a program to do X. Do you want to try it as soon as it's available?"
 1. Loop until any:
-  1. User accepts.
-  1. User rejects.
+  1. Person accepts.
+  1. Person rejects.
 
-NOTE: If user doesn't respond, rewrite the message in a different way & send it again.
+NOTE: If the person doesn't respond, rewrite the message in a different way & send it again.
 
 ## Get a use case
 
@@ -42,6 +42,12 @@ NOTE: If user doesn't respond, rewrite the message in a different way & send it 
   1. User has provided all use cases OR User can't provide more use cases because he's tired.
 
 ## Write a story
+
+Convert a vague use case to a specific story:
+
+1. Validate each line:
+  1. Start with actor name.
+  1. Use present simple tense.
 
 ## Write a function
 
