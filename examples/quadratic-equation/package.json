@@ -1,0 +1,23 @@
+{
+  "name": "quadratic-equation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Denis Gorbachev",
+  "license": "MIT",
+  "scripts": {
+    "test:watch": "jest --watch --bail"
+  },
+  "engines": {
+    "node": "^14.10.1"
+  },
+  "dependencies": {
+    "ajv": "^7.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6"
+  }
+}
