@@ -6,7 +6,7 @@
 
 Playbook saves your time by providing **a decision-making system** for common questions:
 
-1. [How to write a program?]
+1. [How to write a program?](#write-a-program)
 1. [How to write a function?](#write-a-function)
 1. [How to model a real-world entity?](#model-a-real-world-entity)
 
