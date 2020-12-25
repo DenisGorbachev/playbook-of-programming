@@ -14,10 +14,34 @@ Playbook saves your time by providing **a decision-making system** for common qu
 
 ## Write a program
 
-1. Define the program as a set of event listeners (event name -> listener pairs).
-1. For each event listener: [implement it as a function](#write-a-function).
+1. [Get users](#get-a-user) (min 3).
+1. [Get use cases](#get-a-user-dream) (min 3 per user).
+1. [Write stories](#write-a-story).
+1. [Write event listeners](#write-an-event-listener).
+1. [Get user executions](#get-user-executions)
+1. Loop to step 1 until you get what you want from users (typically money).
 
 NOTE: Each program has an implicit "run" event listener, which is the program body. That's the place where you load configs, parse flags, check parameters, etc.
+
+## Get a user
+
+Definition: [user buy-in](#user-buy-in)
+
+1. Ask the user: "I'm developing a program to do X. Do you want to try it as soon as it's available?"
+1. Loop until any:
+  1. User accepts.
+  1. User rejects.
+
+NOTE: If user doesn't respond, rewrite the message in a different way & send it again.
+
+## Get a use case
+
+1. Ask the user: "What should the program do? In other words, what are your use cases?"
+1. Loop until all:
+  1. You can understand all use cases.
+  1. User has provided all use cases OR User can't provide more use cases because he's tired.
+
+## Write a story
 
 ## Write a function
 
@@ -26,8 +50,6 @@ NOTE: Each program has an implicit "run" event listener, which is the program bo
 1. [Write input definitions](#write-input-definitions).
 1. [Write tests](#write-tests).
 1. [Write operations](#write-operations) until the tests are passing.
-
-**On redefinition:**
 
 ## Write a function name
 
@@ -172,6 +194,8 @@ NOTE: In tests, the output values to external APIs are collected via mocks.
   * `SELECT * FROM users`
 * An API read call (described by call arguments)
   * `{method: 'GET', url: 'https://api.twitter.com/1.1/statuses/user_timeline.json'}`
+
+### Story
 
 # Philosophy
 
