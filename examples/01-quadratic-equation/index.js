@@ -7,6 +7,6 @@
 
 import { ajv } from './util/ajv.js'
 
-getRoots()
+getRootSet()
   .then(console.log)
   .catch(console.error)

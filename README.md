@@ -46,7 +46,7 @@ NOTE: Each program has an implicit "run" event listener, which is the program bo
 
 For each independent [output](#output):
 
-1. Get 3 samples:
+1. Write 3 samples:
   1. Find a real-world entity.
   1. Write a [value](#value) of this entity (e.g. plain object / dict / map).
 1. [Write a schema](#write-a-schema) that describes that entity.
@@ -59,7 +59,7 @@ NOTE: If the outputs are not independent (e.g. roots of the same quadratic equat
 1. Write independent [input](#input) names:
   1. If the inputs are not independent (e.g. a set of coefficients of the same quadratic equation), then define then as a single aggregate input (e.g. an array of numbers).
 1. For each independent [input](#input):
-  1. Get 3 samples:
+  1. Write 3 samples:
     1. Find a real-world entity.
     1. Write a model of this entity with specific fields & values (e.g. plain object / dict / map).
   1. Write a schema that describes that entity.
@@ -67,19 +67,24 @@ NOTE: If the outputs are not independent (e.g. roots of the same quadratic equat
 
 NOTE: An input of one function may be an output of another function.
 
-
 ## Write tests
 
-1. Get 3 complete input-output samples.
-1. Mock external dependencies.
+1. For each output sample:
+  1. Find or write a matching input sample.
+
+NOTE: Mock external dependencies.
 
 ## Write operations
 
-1. Choose the basic body schema (choose one: iteration, modification, combination, calculation).
-1. Choose the higher-level body schema:
-  1. Examples:
-    1. `getWebsite`
-    1. `getProduct` (with feedback loop)
+1. If you can write the operations right away, do it.
+1. If you can't write the operations right away:
+  1. Try to find the operations via Google.
+  1. Try to write high-level operations (which will become functions)
+    1. [Choose first matching](#choose-first-matching) basic body schema: `iteration`, `modification`, `combination`, `calculation`.
+    1. Choose the higher-level body schema:
+      1. Examples:
+        1. `getWebsite`
+        1. `getProduct` (with feedback loop)
 
 ## Meta-instructions
 

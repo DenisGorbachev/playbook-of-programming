@@ -1,7 +1,7 @@
 import { ajv } from '../util/ajv.js'
 
 export const RootSetSamples = [
-  { x1: -0.2, x2: -1 },
+  { x1: -1, x2: -0.2 },
   { x1: -0.2, x2: 3 },
   { x1: -5, x2: 2 },
 ]
