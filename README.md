@@ -1,2 +1,177 @@
-# playbook
-Spend less time on writing programs with Playbook
+# Playbook of Programming
+
+**Spend less time on writing programs** with a Playbook of Programming. 
+
+# Intro
+
+Playbook saves your time by providing **a decision-making system** for common questions:
+
+1. [How to write a program?](#write-a-program)
+1. [How to write a function?](#write-a-function)
+1. [How to model a real-world entity?](#model-a-real-world-entity)
+
+# Use Cases
+
+## Write a program
+
+1. Define the program as a set of event listeners (event name -> listener pairs).
+1. For each event listener: [implement it as a function](#write-a-function).
+
+NOTE: Each program has an implicit "run" event listener, which is the program body. That's the place where you load configs, parse flags, check parameters, etc.
+
+## Write a function
+
+1. [Write name](#write-a-function-name)
+1. [Write output definitions](#write-output-definitions).
+1. [Write input definitions](#write-input-definitions).
+1. [Write tests](#write-tests).
+1. [Write operations](#write-operations) until the tests are passing.
+
+**On redefinition:**
+
+## Write a function name
+
+* If the function is an event listener: `on${EventName}`
+  * `onRun`
+  * `onClick`
+* If the function is a read operation: `get${OutputName}`
+  * `getUserId`
+* If the function is a write operation: `${verb}${OutputName}` ([choose a verb](#choose-a-verb))
+  * `setUserId`
+  * `deleteUserById`
+  
+## Model a real-world entity
+
+## Write output definitions
+
+For each independent [output](#output):
+
+1. Get 3 samples:
+  1. Find a real-world entity.
+  1. Write a [value](#value) of this entity (e.g. plain object / dict / map).
+1. [Write a schema](#write-a-schema) that describes that entity.
+  1. If you can't write a schema (stuck for 15 minutes): go back to point #1 (get more entities).
+
+NOTE: If the outputs are not independent (e.g. roots of the same quadratic equation), then define then as a single aggregate output (e.g. an array of numbers).
+
+## Write input definitions
+
+1. Write independent [input](#input) names:
+  1. If the inputs are not independent (e.g. a set of coefficients of the same quadratic equation), then define then as a single aggregate input (e.g. an array of numbers).
+1. For each independent [input](#input):
+  1. Get 3 samples:
+    1. Find a real-world entity.
+    1. Write a model of this entity with specific fields & values (e.g. plain object / dict / map).
+  1. Write a schema that describes that entity.
+    1. If you can't write a schema (stuck for 15 minutes): go back to point #1 (get more entities).
+
+NOTE: An input of one function may be an output of another function.
+
+
+## Write tests
+
+1. Get 3 complete input-output samples.
+1. Mock external dependencies.
+
+## Write operations
+
+1. Choose the basic body schema (choose one: iteration, modification, combination, calculation).
+1. Choose the higher-level body schema:
+  1. Examples:
+    1. `getWebsite`
+    1. `getProduct` (with feedback loop)
+
+## Meta-instructions
+
+### Choose first matching
+
+* Define minimal acceptance tests.
+* Choose first that passes the tests.
+
+The input array is expected to be sorted. If not, add a sorting operation 
+
+### Choose a verb
+
+* [Choose first matching](#choose-first-matching) from preferred verbs:
+  * `get`
+  * `set`
+  * `add`
+  * `remove`
+  * `update`
+  * `delete`
+* If none of above match your case: choose any verb. 
+
+## Definitions
+
+### Entity
+
+A real-world entity.
+
+* You
+* Your house
+* Your future house (there's a Playbook for that...)
+* A car
+* A dog
+
+### Value
+
+* `1`
+* `2.0`
+* `true`
+* `{name: 'Alice'}`
+* `[{name: 'Alice'}, {name: 'Bob'}]`
+
+### Object
+
+A value that represents an entity.
+
+* User model (simple): `{name: 'Alice'}`
+* User model (complex): `{id: 1, name: 'Alice', surname: 'Williams', createdAt: new Date('2020-12-24T21:05:00Z')}` 
+
+### Schema
+
+A value that represents an [object](#object) ([JSON Schema](https://json-schema.org/)).
+
+* User schema (simple) `{type: 'object', properties: {name: {type: 'string', minLength: 1}}}`
+* User schema (complex) `{type: 'object', properties: {id: {type: 'integer'}, name: {type: 'string', minLength: 1}}}`
+
+### Event listener
+
+### Output
+
+* A return value
+  * `1`
+  * `true`
+  * `{name: 'Alice'}`
+* A screen output
+  * `What you're reading right now`
+* A database modification (described by insert / update / delete query)
+  * `INSERT INTO users(name) VALUES ('Alice')`
+* An API call (described by call arguments)
+  * `{method: 'POST', url: 'https://api.twitter.com/1.1/statuses/update.json', params: {status: 'just setting up my twttr'}}`
+  
+NOTE: In tests, the output values to external APIs are collected via mocks.
+
+### Input
+
+* A plain value
+  * `1`
+  * `true`
+  * `{name: 'Alice'}`
+* A user input (e.g. mouse button number)
+  * `2`
+* A database query (select, describe)
+  * `SELECT * FROM users`
+* An API read call (described by call arguments)
+  * `{method: 'GET', url: 'https://api.twitter.com/1.1/statuses/user_timeline.json'}`
+
+# Philosophy
+
+1. Start from goal & design backwards (outputs -> inputs -> operations).
+1. Start from high-level picture, refine to low-level details.
+
+## Start from goal
+
+* It's faster to build something according to the specification (if it's available).
+  * If you're writing a multiplayer game - then write a multiplayer game (not a singleplayer game with multiplayer functionality added as an afterthought)
+* If the specification isn't available (e.g. startups), then your task is to get the specification must 

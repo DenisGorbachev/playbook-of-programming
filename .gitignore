@@ -1,0 +1,11 @@
+.idea
+
+node_modules
+local_modules
+
+*.secret.*
+
+globalConfig.json
+
+.env
+dev.sh
