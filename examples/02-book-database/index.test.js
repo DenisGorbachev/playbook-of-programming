@@ -7,7 +7,7 @@ const runSamples = [
   'show --by-name Ali'
 ]
 
-let alice,
+let alice
 
 beforeEach(async function() {
   alice = new User()
