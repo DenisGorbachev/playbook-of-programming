@@ -1,4 +1,4 @@
-import { ajv } from '../util/ajv.js'
+import { ajv, getSchemaId } from '../util/ajv.js'
 
 export const RootSetSamples = [
   { x1: -1, x2: -0.2 },
@@ -8,6 +8,7 @@ export const RootSetSamples = [
 
 export const RootSetSchema = {
   $async: true,
+  $id: getSchemaId(__filename),
   title: 'rootSet',
   description: 'a set of roots of quadratic equation',
   type: 'object',

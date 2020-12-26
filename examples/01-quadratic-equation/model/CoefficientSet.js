@@ -1,4 +1,4 @@
-import { ajv } from '../util/ajv.js'
+import { ajv, getSchemaId } from '../util/ajv.js'
 
 export const CoefficientSetSamples = [
   { a: 5, b: 6, c: 1 },
@@ -8,6 +8,7 @@ export const CoefficientSetSamples = [
 
 export const CoefficientSetSchema = {
   $async: true,
+  $id: getSchemaId(__filename),
   title: 'coefficientSet',
   description: 'a set of coefficients of a quadratic equation',
   type: 'object',
