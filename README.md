@@ -4,7 +4,7 @@
 
 # Intro
 
-Playbook saves your time by providing **a decision-making system** for common questions:
+Playbook saves your time by providing **a decision-making system** for common cases:
 
 1. [How to write a program?](#write-a-program)
 1. [How to write a function?](#write-a-function)
@@ -15,9 +15,9 @@ Playbook saves your time by providing **a decision-making system** for common qu
 ## Write a program
 
 1. [Get users](#get-a-user) (min 3).
-1. [Get use cases](#get-a-user-dream) (min 3 per user).
-1. [Write event definitions](#write-a-story).
-1. [Generate event sequences](#generate-event-sequences).
+1. [Get use cases](#get-a-use-case) (min 3 per user).
+1. [Write event definitions](#write-an-event-definition).
+1. [Generate tests](#generate-tests).
 1. [Write event listeners](#write-an-event-listener).
 1. [Get user executions](#get-user-executions)
 1. Loop to step 1 until you get what you want from users (typically money).
@@ -40,6 +40,18 @@ NOTE: If the person doesn't respond, rewrite the message in a different way & se
 1. Loop until all:
   1. You can understand all use cases.
   1. User has provided all use cases OR User can't provide more use cases because he's tired.
+
+## Write an event definition
+
+1. Write event name.
+1. Write event parameter definitions
+
+## Generate tests
+
+1. Run test generator.
+1. Check the generated test:
+  1. If the test is valid: implement it.
+  1. If the test duplicates another test: write a test filter function to prevent the generator from creating such tests. 
 
 ## Write a story
 
