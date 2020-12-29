@@ -1,5 +1,13 @@
 import { without } from 'lodash'
 
+export function assignSequence(objects, field, i = 1) {
+  return objects.map(object => Object.assign({}, object, { [field]: i++ }))
+}
+
+export function assignIds(objects, i = 1) {
+  return assignSequence(objects, 'id', i)
+}
+
 export async function getStrings(valid = [], skipped = []) {
   return without(valid.concat('', 'toast', 'with spaces', 'unprintable \t characters', 'multiple \n lines', '123', '123.05'), skipped)
 }

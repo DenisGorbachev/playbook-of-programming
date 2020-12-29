@@ -1,5 +1,5 @@
 {
-  "name": "quadratic-equation",
+  "name": "bookshelf",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Denis Gorbachev",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "ajv": "^7.0.2",
+    "ajv-keywords": "^4.0.0",
     "dotenv": "^8.2.0",
     "knex": "^0.21.15",
     "lodash": "^4.17.20",

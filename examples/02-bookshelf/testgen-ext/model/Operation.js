@@ -1,4 +1,4 @@
-import { ajv, getSchemaId } from '../../01-quadratic-equation/util/ajv.js'
+import { ajv, getSchemaId } from '../../util/ajv.js'
 
 export const OperationSamples = [
   ['setUserId', [1]],

@@ -1,4 +1,4 @@
-import { ajv, getSchemaId } from '../../01-quadratic-equation/util/ajv.js'
+import { ajv, getSchemaId } from '../../util/ajv.js'
 import { OperationSchema } from './Operation.js'
 
 export const ProcessSamples = [

@@ -1,16 +1,17 @@
 import getHash from 'object-hash'
-import { getContext, beforeAll as beforeAllTests, afterAll as afterAllTests, beforeEach as beforeEachTest, afterEach as afterEachTest } from './index.testgen.setup.js'
+import { createContext, beforeAll as beforeAllTests, afterAll as afterAllTests, createContext as beforeEachTest, destroyContext as afterEachTest } from './index.testgen.setup.js'
 import { getOperations, getSnapshot } from './index.testgen.ops.js'
 
 (async function () {
-  const context = await getContext()
+  const context = await createContext()
   beforeAllTests && await beforeAllTests(context)
-  let operations = await getOperations([], context)
+  const snapshot = await getSnapshot(context)
+  let operations = await getOperations([], snapshot, context)
   let processes = operations.map((op) => [op])
-  console.log('stories', processes);
   while (processes.length) {
     let storiesNew = []
     for (const story of processes) {
+      console.log('story', story);
       beforeEachTest && await beforeEachTest(context)
       // TODO: Important: ensure that all `test` calls finish before the next iteration on `stories`
       test(getHash(story), async function () {

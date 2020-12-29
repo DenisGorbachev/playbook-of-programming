@@ -1,27 +1,21 @@
 import knex_module from 'knex'
+import { merge } from 'lodash'
 import { nanoid } from 'nanoid'
-import { env } from './util/env.js'
+import config from './config.js'
 
-export async function getContext() {
+export const createContext = async function () {
   const schema = `test_${nanoid()}`
-  const knex = new knex_module({
-    client: 'pg',
-    connection: env['DATABASE_URL'],
+  const knex = new knex_module(merge({}, config.knex, {
     searchPath: [schema],
     asyncStackTraces: true,
-  })
+  }))
+  await knex.raw(`CREATE SCHEMA IF NOT EXISTS "${schema}"`)
+  await knex.migrate.latest()
   return { knex }
 }
 
-export const beforeAll = async function (context) {
+export const destroyContext = async function (context) {
   const { knex } = context
-  await knex.migrate.latest()
-  await knex.seed.run()
-}
-
-export const afterAll = async function (context) {
-  const { knex } = context
-  console.log('knex.client.database()', knex.client.database());
   await knex.raw(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`)
   await knex.destroy()
 }

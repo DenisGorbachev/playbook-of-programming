@@ -13,33 +13,10 @@ export const getSnapshot = async function (context) {
 }
 
 export async function getOperations(story, snapshot, context) {
-  return [
-    // multarr(['run'], [await getSubcommands()])
-  ].concat(
+  return Array.prototype.concat(
     await getAuthorOperations(story, snapshot),
     await getBookOperations(story, snapshot),
   )
-  // const event = story[story.length - 1]
-  // switch (event.name) {
-  //   case 'run':
-  //     switch (true) {
-  //       case '':
-  //         return ['author', 'book']
-  //       case 'author':
-  //       case 'book':
-  //         return ['add', 'update', 'remove', 'list']
-  //       case 'author add':
-  //         return final(await getAuthorNames())
-  //       case 'author update':
-  //         return await getAuthorNames()
-  //       case 'author update "George Orwell"':
-  //         return final(await getAuthorUpdateSet())
-  //
-  //     }
-  //     break
-  //   default:
-  //     throw new Error(`Unrecognized event: "${event.name}"`)
-  // }
 }
 
 async function getSubcommands() {
@@ -47,12 +24,16 @@ async function getSubcommands() {
 }
 
 async function getAuthorOperations(story, snapshot) {
-  return [].concat(
-    await getAuthorAddOperations(),
-    await getAuthorUpdateOperations(),
-    await getAuthorRemoveOperations(),
-    await getAuthorListOperations(),
+  return Array.prototype.concat(
+    await getAuthorAddOperations(story, snapshot),
+    await getAuthorUpdateOperations(story, snapshot),
+    await getAuthorRemoveOperations(story, snapshot),
+    await getAuthorListOperations(story, snapshot),
   )
+}
+
+async function getBookOperations(story, snapshot) {
+  return []
 }
 
 async function getAuthorAddOperations(story, snapshot) {
@@ -100,7 +81,7 @@ async function getAuthorFields() {
 async function getAuthorSelectorValues(field) {
   switch (field) {
     case 'name':
-      return getAuthorNames().concat(['bogus name'])
+      return (await getAuthorNames()).concat(['bogus name'])
     default:
       return ['bogus']
   }
@@ -115,7 +96,7 @@ async function getAuthorNamesFromSnapshot(story, snapshot) {
 }
 
 async function getAuthorNames() {
-  return getStrings(['"George Orwell"', '"Missing Author"'])
+  return getStrings(['George Orwell', 'Missing Author'])
 }
 
 async function getAuthorUpdateSet() {
