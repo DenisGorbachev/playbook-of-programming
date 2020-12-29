@@ -1,4 +1,4 @@
-import { getStrings, multarr, ops } from './testgen/util.js'
+import { getStrings, multarr, ops } from './testgen-ext/util.js'
 
 export async function * getStories(context) {
   const { knex } = context
@@ -129,16 +129,4 @@ async function getAuthorUpdates() {
 async function getUpdates(fields) {
   const fieldsWithDefault = _.defaults(fields, { missingField: 2 })
   return Object.getOwnPropertyNames(fieldsWithDefault).map((key) => `--set ${key}=${escapeShellArgument(fields[key])}`)
-}
-
-function escapeShellArgument(arg) {
-  return '"' + arg.replace(/(["\s'$`\\])/g, '\\$1') + '"'
-}
-
-run.generator = async function * () {
-  const commands = [].map((table) => {
-  })
-  for (const command of _.flattenDeep(commands)) {
-    yield command
-  }
 }
