@@ -42,5 +42,5 @@ export const ProgramSchema = {
 export const validateProgram = ajv.compile(ProgramSchema)
 
 export const getProgramErrors = async function (program) {
-  return validateProgram(program).then(() => []).catch((error) => error.errors)
+  return validateProgram(program).then(() => []).catch((error) => error.errors || error)
 }

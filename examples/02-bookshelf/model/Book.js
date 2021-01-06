@@ -26,6 +26,6 @@ export const BookSchema = {
 export const validateBook = ajv.compile(BookSchema)
 
 export const getBookErrors = async function (book) {
-  return validateBook(book).then(() => []).catch((error) => error.errors)
+  return validateBook(book).then(() => []).catch((error) => error.errors || error)
 }
 
