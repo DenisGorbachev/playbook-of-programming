@@ -11,7 +11,7 @@
     "node": "^14.10.1"
   },
   "dependencies": {
-    "ajv": "^7.0.2",
+    "ajv": "^7.0.3",
     "ajv-keywords": "^4.0.0",
     "dotenv": "^8.2.0",
     "knex": "^0.21.15",
