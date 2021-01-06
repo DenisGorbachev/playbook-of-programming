@@ -14,32 +14,30 @@ Playbook saves your time by providing **a decision-making system** for common ca
 
 ## Write a program
 
-1. [Get users](#get-a-user) (min 3).
-1. [Get use cases](#get-a-use-case) (min 3 per user).
-1. [Write event definitions](#write-an-event-definition).
+1. [Get users](#get-users) (min 3).
+1. [Get use cases](#get-use-cases) (min 3 per user).
 1. [Generate tests](#generate-tests).
-1. [Write event listeners](#write-an-event-listener).
+1. [Write functions](#write-functions).
 1. [Get user executions](#get-user-executions)
 1. Loop to step 1 until you get what you want from users (typically money).
 
 NOTE: Each program has an implicit "run" event listener, which is the program body. That's the place where you load configs, parse flags, check parameters, etc.
 
-## Get a user
+## Get users
 
-1. Find a person who might be interested in using the program.
-1. Ask the person: "I'm developing a program to do X. Do you want to try it as soon as it's available?"
-1. Loop until any:
-  1. Person accepts.
-  1. Person rejects.
+1. Loop while you don't have enough users:
+  1. Find a person who might be interested in using the program.
+  1. Ask the person: "I'm developing a program to do X. Do you want to try it as soon as it's available?".
+  1. Loop until the person accepts or rejects (continue asking if he doesn't reply or replies inconclusively).
+    1. If the person doesn't respond, rewrite the message in a different way & send it again.
 
-NOTE: If the person doesn't respond, rewrite the message in a different way & send it again.
+## Get use cases
 
-## Get a use case
-
-1. Ask the user: "What should the program do? In other words, what are your use cases?"
-1. Loop until all:
-  1. You can understand all use cases.
-  1. User has provided all use cases OR User can't provide more use cases because he's tired.
+1. For each user:
+  1. Ask the user: "What should the program do? In other words, what are your use cases?"
+  1. Loop until:
+    1. You understand all use cases.
+    1. You have extracted all use cases from the user.
 
 ## Write an event definition
 
@@ -60,6 +58,11 @@ Convert a vague use case to a specific story:
 1. Validate each line:
   1. Start with actor name.
   1. Use present simple tense.
+
+## Write functions
+
+1. For each test suite:
+  1. [Write a function](#write-a-function) that passes all tests in a test suite.
 
 ## Write a function
 
@@ -217,9 +220,16 @@ NOTE: In tests, the output values to external APIs are collected via mocks.
 
 # Philosophy
 
+1. Every problem can be reduced to a sequence of problems: write a program, execute a program.
+  1. Even when we're doing physical work, our brain "plans" this work by imagining the necessary actions. 
 1. Start from goal & design backwards (outputs -> inputs -> tests -> operations).
 1. Start from high-level picture, refine to low-level details (high-level functions -> low-level functions).
   1. Fill the high-level picture completely, then move to low-level details (write all operations of high-level function -> for each operation: write an implementation).
+1. We build programs from elementary operations because it's faster to memorize elementary results + perform a computation than to memorize the result of each computation.
+  1. Example:
+    1. We memorize the summation table from 1 to 10.
+    1. We memorize the multiplication table from 1 to 10.
+    1. We compute 64 * 321 using a sequence of elementary multiplications & summations.
 
 ## Start from goal
 

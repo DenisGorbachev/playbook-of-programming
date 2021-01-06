@@ -14,5 +14,4 @@ for (const process of getProcesses()) {
     await process.assert(resultTail, snapshotOld, snapshotNew, context)
     await destroyContext(context)
   })
-  afterEachTest && await afterEachTest(context)
 }
