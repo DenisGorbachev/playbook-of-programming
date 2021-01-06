@@ -1,7 +1,11 @@
 import Ajv from 'ajv'
 import path from 'path'
 
-export const ajv = new Ajv({ allErrors: true, $data: true })
+export const ajv = new Ajv({
+  allErrors: true,
+  $data: true,
+  keywords: require('ajv-keywords/dist/definitions')({}),
+})
 
 export const getSchemaId = function (filename) {
   const { dir, name } = path.parse(filename)
