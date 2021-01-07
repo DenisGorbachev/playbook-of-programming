@@ -3,6 +3,7 @@ import { createContext, beforeAll as beforeAllTests, afterAll as afterAllTests, 
 import { getOperations, getSnapshot } from './index.testgen.ops.js'
 
 // TODO: IMPORTANT: See https://hypothesis.works/articles/rule-based-stateful-testing/
+// TODO: See https://github.com/typelevel/scalacheck/blob/master/doc/UserGuide.md#stateful-testing
 
 for (const process of getProcesses()) {
   test(getHash(process), async function () {
