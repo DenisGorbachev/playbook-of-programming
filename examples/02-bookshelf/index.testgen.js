@@ -1,5 +1,5 @@
 import getHash from 'object-hash'
-import { createContext, beforeAll as beforeAllTests, afterAll as afterAllTests, createContext as beforeEachTest, destroyContext as afterEachTest } from './index.testgen.setup.js'
+import { createContext, beforeAll as beforeAllTests, afterAll as afterAllTests, createContext as beforeEachTest, destroyContext as afterEachTest } from './test/context.js'
 import { getOperations, getSnapshot } from './index.testgen.ops.js'
 
 /**

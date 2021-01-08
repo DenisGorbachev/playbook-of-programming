@@ -1,7 +1,7 @@
 import knex_module from 'knex'
 import { merge } from 'lodash'
 import { nanoid } from 'nanoid'
-import config from './config.js'
+import config from '../config.js'
 
 export const createContext = async function () {
   const schema = `test_${nanoid()}`
@@ -16,6 +16,6 @@ export const createContext = async function () {
 
 export const destroyContext = async function (context) {
   const { knex } = context
-  await knex.raw(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`)
+  await knex.raw(`DROP SCHEMA IF EXISTS "${knex.client.config.searchPath[0]}" CASCADE`)
   await knex.destroy()
 }

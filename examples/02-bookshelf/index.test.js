@@ -1,20 +1,27 @@
-import getHash from 'object-hash'
-import { createContext, beforeAll as beforeAllTests, afterAll as afterAllTests, createContext as beforeEachTest, destroyContext as afterEachTest, destroyContext } from './index.testgen.setup.js'
-import { getOperations, getSnapshot } from './index.testgen.ops.js'
+import fc from 'fast-check'
+import { createContext, destroyContext } from './test/context.js'
 
-// TODO: IMPORTANT: See https://hypothesis.works/articles/rule-based-stateful-testing/
-// TODO: See https://github.com/typelevel/scalacheck/blob/master/doc/UserGuide.md#stateful-testing
+let context, knex
 
-for (const process of getProcesses()) {
-  test(getHash(process), async function () {
-    const head = process.slice(0, -1)
-    const tail = [process[process.length - 1]]
-    const context = createContext()
-    const resultHead = await run(head, context)
-    const snapshotOld = await getSnapshot(context)
-    const resultTail = await run(tail, context)
-    const snapshotNew = await getSnapshot(context)
-    await process.assert(resultTail, snapshotOld, snapshotNew, context)
-    await destroyContext(context)
-  })
-}
+beforeEach(async function() {
+  context = await createContext()
+  knex = context.knex
+})
+
+afterEach(async function() {
+  await destroyContext(context)
+})
+
+test('index', async function () {
+  const allCommands = [
+    // fc.integer().map(v => new PushCommand(v)),
+    // fc.constant(new PopCommand()),
+    // fc.constant(new SizeCommand()),
+  ]
+  // return fc.assert(
+  //   fc.asyncProperty(fc.commands(allCommands, { maxCommands: 100 }), async cmds => {
+  //     const s = () => ({ model: { num: 0 }, real: new List() })
+  //     await fc.asyncModelRun(s, cmds)
+  //   }),
+  // )
+})

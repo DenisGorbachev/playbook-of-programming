@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * This program provides subcommands to manage users.
  *
@@ -6,6 +8,9 @@
  * - Add user
  * - Show all users
  */
+
+import { addAuthor } from './lib/addAuthor.js'
+import { validateAuthor } from './model/Author.js'
 
 /**
  * How to develop a program with stochastic effects?
@@ -26,3 +31,5 @@
  *   - Description (a text in natural language)
  *     - Scenarios
  */
+
+yargs.parse()
