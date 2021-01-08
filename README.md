@@ -27,9 +27,13 @@ NOTE: Each program has an implicit "run" event listener, which is the program bo
 
 1. Loop while you don't have enough users:
   1. Find a person who might be interested in using the program.
-  1. Ask the person: "I'm developing a program to do X. Do you want to try it as soon as it's available?".
-  1. Loop until the person accepts or rejects (continue asking if he doesn't reply or replies inconclusively).
-    1. If the person doesn't respond, rewrite the message in a different way & send it again.
+  1. Loop until the person accepts or rejects:
+    1. Write a message:
+      1. First message: "I'm developing a program to do X. Do you want to try it as soon as it's available?".
+      1. Second & other messages: rewrite the first message in a different way (for example: list incentives).
+        1. Note: if the person doesn't reply or replies inconclusively, continue asking.
+    1. Send the message to the person.
+    1. Set timeout to 1 day.
 
 ## Get use cases
 
@@ -83,6 +87,8 @@ Convert a vague use case to a specific story:
   * `setUserId`
   * `deleteUserById`
   
+## Get user executions
+
 ## Model a real-world entity
 
 ## Write output definitions
