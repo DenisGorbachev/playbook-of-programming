@@ -6,6 +6,13 @@ export const AuthorValidSamples = [
   { name: 'Виктор Пелевин' },
 ]
 
+export const AuthorInvalidSamples = [
+  {
+    // empty name
+    name: '',
+  },
+]
+
 export const AuthorSchema = {
   $async: true,
   $id: getSchemaId(__filename),
@@ -19,3 +26,6 @@ export const AuthorSchema = {
 
 export const validateAuthor = ajv.compile(AuthorSchema)
 
+export const getAuthorErrors = async function (author) {
+  return validateAuthor(author).then(() => []).catch((error) => error.errors || error)
+}
