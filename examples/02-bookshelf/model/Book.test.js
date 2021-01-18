@@ -1,13 +1,9 @@
 import { BookValidSamples, BookInvalidSamples, getBookErrors } from './Book.js'
 
-test('Book valid samples match schema', async function () {
-  for (const sample of BookValidSamples) {
-    await expect(getBookErrors(sample)).resolves.toEqual([])
-  }
+test.each(BookValidSamples)('Book valid sample matches schema \n%o', async function (sample) {
+  await expect(getBookErrors(sample)).resolves.toEqual([])
 })
 
-test('Book invalid samples do not match schema', async function () {
-  for (const sample of BookInvalidSamples) {
-    await expect(getBookErrors(sample)).resolves.toContainEqual(expect.any(Object))
-  }
+test.each(BookInvalidSamples)('Book invalid sample does not match schema \n%o', async function (sample) {
+  await expect(getBookErrors(sample)).resolves.toContainEqual(expect.any(Object))
 })

@@ -14,9 +14,7 @@ Playbook saves your time by providing **a decision-making system** for common ca
 
 ## Write a program
 
-1. [Get users](#get-users) (min 3).
-1. [Get use cases](#get-use-cases) (min 3 per user).
-1. [Generate tests](#generate-tests).
+1. [Write tests](#write-tests).
 1. [Write functions](#write-functions).
 1. [Get user executions](#get-user-executions)
 1. Loop to step 1 until you get what you want from users (typically money).
@@ -37,6 +35,7 @@ NOTE: Each program has an implicit "run" event listener, which is the program bo
 
 ## Get use cases
 
+1. [Get users](#get-users).
 1. For each user:
   1. Ask the user: "What should the program do? In other words, what are your use cases?"
   1. Loop until:
@@ -48,9 +47,13 @@ NOTE: Each program has an implicit "run" event listener, which is the program bo
 1. Write event name.
 1. Write event parameter definitions
 
-## Generate tests
+## Write tests
 
-1. Run test generator.
+1. [Get use cases](#get-use-cases).
+1. Choose a testing framework:
+  1. If SUT is a pure function: use property-based testing framework.
+  1. If SUT is an effectful function: use model-based testing framework.
+1. Write tests using a testing framework.
 1. Check the generated test:
   1. If the test is valid: implement it.
   1. If the test duplicates another test: write a test filter function to prevent the generator from creating such tests. 
